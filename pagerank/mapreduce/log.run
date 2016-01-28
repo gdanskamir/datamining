@@ -1,0 +1,1383 @@
++++ dirname pr_mapreduce.sh
+++ cd .
+++ pwd
++ current_dir=/home/spider/wangbo01/study/pagerank/mapreduce
++ source /home/spider/wangbo01/study/pagerank/mapreduce/g_conf.sh
+++ BASE_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank
+++ HADOOP_HOME=/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/
+++ PYTHON_TOOL_DIR=/app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz
++ idx=0
++ current_task=pr_mapreduce
++ '[' 0 -lt 30 ']'
++ (( idx_out=0+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_1
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_1
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_1
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_1 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_0 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/23 23:12:12 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/23 23:12:12 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob8588389698544827507.jar tmpDir=null
+15/12/23 23:12:13 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/23 23:12:13 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/23 23:12:15 INFO hdfs.FMSClient: Write 14918175646901267 in pipeline 10.215.221.19:7001, 10.215.146.13:7001, 10.215.140.55:7001, 10.215.55.41:7001, 10.213.78.27:7001, 10.213.120.22:7001, 10.213.120.36:7001, 10.213.59.33:7001, 10.213.138.16:7001, 10.214.234.20:7001
+15/12/23 23:12:15 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/23 23:12:15 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/23 23:12:15 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/23 23:12:15 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/23 23:12:15 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_0
+15/12/23 23:12:16 INFO mapred.FileInputFormat: Total input paths to process : 1
+15/12/23 23:12:16 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/23 23:12:16 INFO hdfs.FMSClient: Write 36310273275355379 in pipeline 10.214.223.23:7001, 10.213.130.40:7001, 10.213.130.13:7001
+15/12/23 23:12:16 INFO mapred.JobClient: splits size : 2
+15/12/23 23:12:16 INFO hdfs.FMSClient: Write 7599826252236555 in pipeline 10.215.219.51:7001, 10.215.55.23:7001, 10.215.55.39:7001
+15/12/23 23:12:16 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_994648/split.done
+15/12/23 23:12:17 INFO hdfs.FMSClient: Write 3377701602274624 in pipeline 10.213.56.22:7001, 10.213.91.29:7001, 10.213.91.28:7001
+15/12/23 23:12:17 INFO mapred.JobClient: Running job: job_20151126032920_994648
+15/12/23 23:12:17 INFO mapred.JobClient: To kill this job, run:
+15/12/23 23:12:17 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_994648
+15/12/23 23:12:17 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_994648
+15/12/23 23:12:37 INFO mapred.JobClient: Total split num: 2
+15/12/23 23:12:37 INFO mapred.JobClient: Total split size: 573 (bytes)
+15/12/23 23:12:37 INFO mapred.JobClient: Total split time: 762 (ms)
+15/12/23 23:12:38 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/23 23:28:38 INFO mapred.JobClient:  map 3% reduce 0%
+15/12/23 23:28:58 INFO mapred.JobClient:  map 7% reduce 0%
+15/12/23 23:29:07 INFO mapred.JobClient:  map 9% reduce 0%
+15/12/23 23:29:17 INFO mapred.JobClient:  map 13% reduce 0%
+15/12/23 23:29:27 INFO mapred.JobClient:  map 18% reduce 0%
+15/12/23 23:29:38 INFO mapred.JobClient:  map 23% reduce 0%
+15/12/23 23:29:48 INFO mapred.JobClient:  map 26% reduce 0%
+15/12/23 23:29:58 INFO mapred.JobClient:  map 29% reduce 0%
+15/12/23 23:30:08 INFO mapred.JobClient:  map 34% reduce 0%
+15/12/23 23:30:18 INFO mapred.JobClient:  map 38% reduce 0%
+15/12/23 23:30:28 INFO mapred.JobClient:  map 43% reduce 0%
+15/12/23 23:30:38 INFO mapred.JobClient:  map 48% reduce 0%
+15/12/23 23:30:48 INFO mapred.JobClient:  map 53% reduce 0%
+15/12/23 23:30:58 INFO mapred.JobClient:  map 57% reduce 0%
+15/12/23 23:31:08 INFO mapred.JobClient:  map 62% reduce 0%
+15/12/23 23:31:18 INFO mapred.JobClient:  map 65% reduce 0%
+15/12/23 23:31:28 INFO mapred.JobClient:  map 66% reduce 0%
+15/12/23 23:31:38 INFO mapred.JobClient:  map 69% reduce 0%
+15/12/23 23:31:48 INFO mapred.JobClient:  map 70% reduce 0%
+15/12/23 23:31:58 INFO mapred.JobClient:  map 71% reduce 0%
+15/12/23 23:32:08 INFO mapred.JobClient:  map 72% reduce 0%
+15/12/23 23:32:18 INFO mapred.JobClient:  map 75% reduce 0%
+15/12/23 23:32:28 INFO mapred.JobClient:  map 76% reduce 0%
+15/12/23 23:32:37 INFO mapred.JobClient:  map 77% reduce 0%
+15/12/23 23:32:47 INFO mapred.JobClient:  map 79% reduce 0%
+15/12/23 23:32:58 INFO mapred.JobClient:  map 80% reduce 0%
+15/12/23 23:33:08 INFO mapred.JobClient:  map 81% reduce 0%
+15/12/23 23:33:18 INFO mapred.JobClient:  map 82% reduce 0%
+15/12/23 23:33:28 INFO mapred.JobClient:  map 84% reduce 0%
+15/12/23 23:33:38 INFO mapred.JobClient:  map 86% reduce 0%
+15/12/23 23:33:48 INFO mapred.JobClient:  map 87% reduce 0%
+15/12/23 23:33:58 INFO mapred.JobClient:  map 88% reduce 0%
+15/12/23 23:34:18 INFO mapred.JobClient:  map 89% reduce 0%
+15/12/23 23:34:28 INFO mapred.JobClient:  map 91% reduce 0%
+15/12/23 23:34:48 INFO mapred.JobClient:  map 93% reduce 0%
+15/12/23 23:34:58 INFO mapred.JobClient:  map 94% reduce 0%
+15/12/23 23:35:08 INFO mapred.JobClient:  map 96% reduce 0%
+15/12/23 23:35:18 INFO mapred.JobClient:  map 98% reduce 0%
+15/12/23 23:35:28 INFO mapred.JobClient:  map 99% reduce 0%
+15/12/23 23:36:38 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/23 23:37:18 INFO mapred.JobClient:  map 100% reduce 20%
+15/12/23 23:37:28 INFO mapred.JobClient:  map 100% reduce 48%
+15/12/23 23:37:38 INFO mapred.JobClient:  map 100% reduce 57%
+15/12/23 23:37:48 INFO mapred.JobClient:  map 100% reduce 59%
+15/12/23 23:37:58 INFO mapred.JobClient:  map 100% reduce 69%
+15/12/23 23:38:08 INFO mapred.JobClient:  map 100% reduce 72%
+15/12/23 23:38:18 INFO mapred.JobClient:  map 100% reduce 81%
+15/12/23 23:38:28 INFO mapred.JobClient:  map 100% reduce 84%
+15/12/23 23:38:38 INFO mapred.JobClient:  map 100% reduce 86%
+15/12/23 23:38:48 INFO mapred.JobClient:  map 100% reduce 87%
+15/12/23 23:38:58 INFO mapred.JobClient:  map 100% reduce 88%
+15/12/23 23:39:08 INFO mapred.JobClient:  map 100% reduce 89%
+15/12/23 23:39:18 INFO mapred.JobClient:  map 100% reduce 90%
+15/12/23 23:39:28 INFO mapred.JobClient:  map 100% reduce 91%
+15/12/23 23:39:48 INFO mapred.JobClient:  map 100% reduce 92%
+15/12/23 23:39:58 INFO mapred.JobClient:  map 100% reduce 93%
+15/12/23 23:40:18 INFO mapred.JobClient:  map 100% reduce 94%
+15/12/23 23:40:48 INFO mapred.JobClient:  map 100% reduce 95%
+15/12/23 23:41:28 INFO mapred.JobClient:  map 100% reduce 96%
+15/12/23 23:41:48 INFO mapred.JobClient:  map 100% reduce 97%
+15/12/23 23:41:58 INFO mapred.JobClient:  map 100% reduce 98%
+15/12/23 23:42:08 INFO mapred.JobClient:  map 100% reduce 99%
+15/12/23 23:42:09 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/23 23:42:09 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/23 23:42:09 INFO mapred.JobClient: Job complete: job_20151126032920_994648
+15/12/23 23:42:10 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_1
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=0+1 ))
++ '[' 1 -lt 30 ']'
++ (( idx_out=1+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_2
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_2
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_2
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_2 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_1 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/23 23:42:11 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/23 23:42:11 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob7787713039501433509.jar tmpDir=null
+15/12/23 23:42:11 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/23 23:42:11 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/23 23:42:12 INFO hdfs.FMSClient: Write 18014400391586923 in pipeline 10.213.139.29:7001, 10.213.80.25:7001, 10.213.195.22:7001, 10.213.185.40:7001, 10.213.92.33:7001, 10.215.226.17:7001, 10.215.24.51:7001, 10.215.24.61:7001, 10.215.239.44:7001, 10.215.249.42:7001
+15/12/23 23:42:12 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/23 23:42:12 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/23 23:42:12 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/23 23:42:12 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/23 23:42:12 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_1
+15/12/23 23:42:12 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/23 23:42:12 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/23 23:42:12 INFO hdfs.FMSClient: Write 14355225693514255 in pipeline 10.213.147.18:7001, 10.213.123.34:7001, 10.213.123.42:7001
+15/12/23 23:42:12 INFO mapred.JobClient: splits size : 10
+15/12/23 23:42:12 INFO hdfs.FMSClient: Write 11540475926376912 in pipeline 10.213.136.42:7001, 10.213.193.28:7001, 10.213.193.30:7001
+15/12/23 23:42:12 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_995238/split.done
+15/12/23 23:42:12 INFO hdfs.FMSClient: Write 20829150157426541 in pipeline 10.213.96.13:7001, 10.215.141.54:7001, 10.215.141.40:7001
+15/12/23 23:42:13 INFO mapred.JobClient: Running job: job_20151126032920_995238
+15/12/23 23:42:13 INFO mapred.JobClient: To kill this job, run:
+15/12/23 23:42:13 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_995238
+15/12/23 23:42:13 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_995238
+15/12/23 23:42:28 INFO mapred.JobClient: Total split num: 10
+15/12/23 23:42:28 INFO mapred.JobClient: Total split size: 2905 (bytes)
+15/12/23 23:42:28 INFO mapred.JobClient: Total split time: 291 (ms)
+15/12/23 23:42:29 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/23 23:58:58 INFO mapred.JobClient:  map 1% reduce 0%
+15/12/23 23:59:08 INFO mapred.JobClient:  map 20% reduce 0%
+15/12/23 23:59:18 INFO mapred.JobClient:  map 41% reduce 0%
+15/12/23 23:59:28 INFO mapred.JobClient:  map 85% reduce 0%
+15/12/23 23:59:38 INFO mapred.JobClient:  map 87% reduce 0%
+15/12/23 23:59:48 INFO mapred.JobClient:  map 96% reduce 0%
+15/12/23 23:59:58 INFO mapred.JobClient:  map 98% reduce 0%
+15/12/24 00:00:08 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 00:00:18 INFO mapred.JobClient:  map 100% reduce 34%
+15/12/24 00:00:28 INFO mapred.JobClient:  map 100% reduce 62%
+15/12/24 00:00:38 INFO mapred.JobClient:  map 100% reduce 90%
+15/12/24 00:00:48 INFO mapred.JobClient:  map 100% reduce 96%
+15/12/24 00:01:18 INFO mapred.JobClient:  map 100% reduce 97%
+15/12/24 00:01:38 INFO mapred.JobClient:  map 100% reduce 99%
+15/12/24 00:02:00 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 00:02:00 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 00:02:00 INFO mapred.JobClient: Job complete: job_20151126032920_995238
+15/12/24 00:02:00 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_2
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=1+1 ))
++ '[' 2 -lt 30 ']'
++ (( idx_out=2+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_3
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_3
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_3
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_3 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_2 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 00:02:01 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 00:02:01 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob5634086486107144125.jar tmpDir=null
+15/12/24 00:02:02 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 00:02:02 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 00:02:02 INFO hdfs.FMSClient: Write 6192451368738227 in pipeline 10.213.54.11:7001, 10.213.52.37:7001, 10.213.86.11:7001, 10.213.190.23:7001, 10.213.108.19:7001, 10.215.112.43:7001, 10.215.112.45:7001, 10.215.238.40:7001, 10.215.225.38:7001, 10.215.55.14:7001
+15/12/24 00:02:07 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 00:02:07 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 00:02:07 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 00:02:07 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 00:02:07 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_2
+15/12/24 00:02:14 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 00:02:14 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 00:02:14 INFO hdfs.FMSClient: Write 33776998484876546 in pipeline 10.215.232.55:7001, 10.215.215.19:7001, 10.215.215.23:7001
+15/12/24 00:02:14 INFO mapred.JobClient: splits size : 10
+15/12/24 00:02:14 INFO hdfs.FMSClient: Write 34902898391858057 in pipeline 10.213.106.30:7001, 10.213.73.22:7001, 10.213.73.14:7001
+15/12/24 00:02:14 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_995711/split.done
+15/12/24 00:02:14 INFO hdfs.FMSClient: Write 6755401322159749 in pipeline 10.215.158.32:7001, 10.215.21.12:7001, 10.215.21.21:7001
+15/12/24 00:02:14 INFO mapred.JobClient: Running job: job_20151126032920_995711
+15/12/24 00:02:14 INFO mapred.JobClient: To kill this job, run:
+15/12/24 00:02:14 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_995711
+15/12/24 00:02:14 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_995711
+15/12/24 00:02:35 INFO mapred.JobClient: Total split num: 10
+15/12/24 00:02:35 INFO mapred.JobClient: Total split size: 2905 (bytes)
+15/12/24 00:02:35 INFO mapred.JobClient: Total split time: 7150 (ms)
+15/12/24 00:02:36 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 00:23:13 INFO mapred.JobClient:  map 10% reduce 0%
+15/12/24 00:23:23 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 00:24:11 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 00:24:12 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 00:24:12 INFO mapred.JobClient: Job complete: job_20151126032920_995711
+15/12/24 00:24:12 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_3
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=2+1 ))
++ '[' 3 -lt 30 ']'
++ (( idx_out=3+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_4
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_4
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_4
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_4 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_3 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 00:24:13 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 00:24:13 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob8867725332226958056.jar tmpDir=null
+15/12/24 00:24:13 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 00:24:13 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 00:24:13 INFO hdfs.FMSClient: Write 3940651555772501 in pipeline 10.213.179.12:7001, 10.213.122.27:7001, 10.213.122.32:7001, 10.213.32.22:7001, 10.213.117.34:7001, 10.213.116.34:7001, 10.213.80.34:7001, 10.214.238.45:7001, 10.215.157.39:7001, 10.215.133.59:7001
+15/12/24 00:24:14 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 00:24:14 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 00:24:14 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 00:24:14 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 00:24:14 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_3
+15/12/24 00:24:14 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 00:24:14 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 00:24:14 INFO hdfs.FMSClient: Write 31806673647923924 in pipeline 10.213.23.32:7001, 10.213.108.41:7001, 10.213.108.34:7001
+15/12/24 00:24:15 INFO mapred.JobClient: splits size : 10
+15/12/24 00:24:15 INFO hdfs.FMSClient: Write 36310273275433865 in pipeline 10.213.95.31:7001, 10.214.249.32:7001, 10.214.249.15:7001
+15/12/24 00:24:15 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_996357/split.done
+15/12/24 00:24:15 INFO hdfs.FMSClient: Write 35184373368591243 in pipeline 10.215.228.51:7001, 10.213.149.27:7001, 10.213.149.37:7001
+15/12/24 00:24:15 INFO mapred.JobClient: Running job: job_20151126032920_996357
+15/12/24 00:24:15 INFO mapred.JobClient: To kill this job, run:
+15/12/24 00:24:15 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_996357
+15/12/24 00:24:15 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_996357
+15/12/24 00:24:39 INFO mapred.JobClient: Total split num: 10
+15/12/24 00:24:39 INFO mapred.JobClient: Total split size: 2905 (bytes)
+15/12/24 00:24:39 INFO mapred.JobClient: Total split time: 292 (ms)
+15/12/24 00:24:40 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 00:39:15 INFO mapred.JobClient:  map 20% reduce 0%
+15/12/24 00:39:25 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 00:39:45 INFO mapred.JobClient:  map 100% reduce 10%
+15/12/24 00:39:55 INFO mapred.JobClient:  map 100% reduce 76%
+15/12/24 00:39:58 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 00:39:58 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 00:39:58 INFO mapred.JobClient: Job complete: job_20151126032920_996357
+15/12/24 00:39:58 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_4
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=3+1 ))
++ '[' 4 -lt 30 ']'
++ (( idx_out=4+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_5
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_5
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_5
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_5 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_4 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 00:40:00 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 00:40:00 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob5636217716436216254.jar tmpDir=null
+15/12/24 00:40:01 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 00:40:01 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 00:40:01 INFO hdfs.FMSClient: Write 33776998484917468 in pipeline 10.213.134.29:7001, 10.213.117.13:7001, 10.213.117.23:7001, 10.213.28.19:7001, 10.213.78.23:7001, 10.213.73.23:7001, 10.213.136.36:7001, 10.213.153.29:7001, 10.214.32.55:7001, 10.215.221.42:7001
+15/12/24 00:40:02 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 00:40:02 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 00:40:02 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 00:40:02 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 00:40:02 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_4
+15/12/24 00:40:02 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 00:40:02 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 00:40:02 INFO hdfs.FMSClient: Write 28710448904322082 in pipeline 10.215.219.20:7001, 10.215.189.58:7001, 10.215.189.24:7001
+15/12/24 00:40:03 INFO mapred.JobClient: splits size : 10
+15/12/24 00:40:03 INFO hdfs.FMSClient: Write 29836348811164709 in pipeline 10.215.139.39:7001, 10.213.172.22:7001, 10.213.172.27:7001
+15/12/24 00:40:03 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_996684/split.done
+15/12/24 00:40:03 INFO hdfs.FMSClient: Write 8162776205754211 in pipeline 10.213.101.30:7001, 10.213.80.24:7001, 10.213.80.42:7001
+15/12/24 00:40:03 INFO mapred.JobClient: Running job: job_20151126032920_996684
+15/12/24 00:40:03 INFO mapred.JobClient: To kill this job, run:
+15/12/24 00:40:03 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_996684
+15/12/24 00:40:03 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_996684
+15/12/24 00:40:15 INFO mapred.JobClient: Total split num: 10
+15/12/24 00:40:15 INFO mapred.JobClient: Total split size: 2905 (bytes)
+15/12/24 00:40:15 INFO mapred.JobClient: Total split time: 332 (ms)
+15/12/24 00:40:16 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 00:47:06 INFO mapred.JobClient:  map 40% reduce 0%
+15/12/24 00:47:16 INFO mapred.JobClient:  map 90% reduce 0%
+15/12/24 00:47:36 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 00:47:46 INFO mapred.JobClient:  map 100% reduce 20%
+15/12/24 00:47:56 INFO mapred.JobClient:  map 100% reduce 90%
+15/12/24 00:47:57 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 00:47:57 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 00:47:57 INFO mapred.JobClient: Job complete: job_20151126032920_996684
+15/12/24 00:47:57 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_5
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=4+1 ))
++ '[' 5 -lt 30 ']'
++ (( idx_out=5+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_6
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_6
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_6
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_6 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_5 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 00:47:59 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 00:47:59 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob8871749571854004889.jar tmpDir=null
+15/12/24 00:47:59 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 00:47:59 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 00:47:59 INFO hdfs.FMSClient: Write 41095347879386630 in pipeline 10.215.22.12:7001, 10.215.156.62:7001, 10.215.156.64:7001, 10.215.147.24:7001, 10.215.121.62:7001, 10.215.141.23:7001, 10.215.249.34:7001, 10.215.222.57:7001, 10.213.112.22:7001, 10.213.138.37:7001
+15/12/24 00:48:00 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 00:48:00 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 00:48:00 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 00:48:00 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 00:48:00 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_5
+15/12/24 00:48:00 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 00:48:00 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 00:48:00 INFO hdfs.FMSClient: Write 34058473461778522 in pipeline 10.213.85.29:7001, 10.215.147.61:7001, 10.215.147.35:7001
+15/12/24 00:48:00 INFO mapred.JobClient: splits size : 10
+15/12/24 00:48:00 INFO hdfs.FMSClient: Write 12103425879871787 in pipeline 10.215.147.13:7001, 10.215.180.17:7001, 10.215.180.56:7001
+15/12/24 00:48:00 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_996852/split.done
+15/12/24 00:48:00 INFO hdfs.FMSClient: Write 31525198671241988 in pipeline 10.213.92.40:7001, 10.215.214.20:7001, 10.215.214.60:7001
+15/12/24 00:48:01 INFO mapred.JobClient: Running job: job_20151126032920_996852
+15/12/24 00:48:01 INFO mapred.JobClient: To kill this job, run:
+15/12/24 00:48:01 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_996852
+15/12/24 00:48:01 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_996852
+15/12/24 00:48:17 INFO mapred.JobClient: Total split num: 10
+15/12/24 00:48:17 INFO mapred.JobClient: Total split size: 2905 (bytes)
+15/12/24 00:48:17 INFO mapred.JobClient: Total split time: 306 (ms)
+15/12/24 00:48:18 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 00:53:56 INFO mapred.JobClient:  map 80% reduce 0%
+15/12/24 00:54:06 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 00:54:26 INFO mapred.JobClient:  map 100% reduce 10%
+15/12/24 00:54:36 INFO mapred.JobClient:  map 100% reduce 90%
+15/12/24 00:54:37 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 00:54:37 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 00:54:37 INFO mapred.JobClient: Job complete: job_20151126032920_996852
+15/12/24 00:54:37 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_6
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=5+1 ))
++ '[' 6 -lt 30 ']'
++ (( idx_out=6+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_7
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_7
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_7
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_7 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_6 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 00:54:39 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 00:54:39 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob4701362181612274264.jar tmpDir=null
+15/12/24 00:54:39 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 00:54:39 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 00:54:39 INFO hdfs.FMSClient: Write 20829150157504514 in pipeline 10.215.147.53:7001, 10.215.216.23:7001, 10.215.216.25:7001, 10.215.215.36:7001, 10.215.236.63:7001, 10.215.146.33:7001, 10.213.134.37:7001, 10.213.86.14:7001, 10.213.83.15:7001, 10.213.91.28:7001
+15/12/24 00:54:39 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 00:54:39 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 00:54:39 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 00:54:39 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 00:54:39 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_6
+15/12/24 00:54:39 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 00:54:39 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 00:54:40 INFO hdfs.FMSClient: Write 18577350345089285 in pipeline 10.213.206.31:7001, 10.215.215.64:7001, 10.215.215.55:7001
+15/12/24 00:54:40 INFO mapred.JobClient: splits size : 10
+15/12/24 00:54:40 INFO hdfs.FMSClient: Write 34339948438497836 in pipeline 10.215.221.62:7001, 10.213.115.20:7001, 10.213.115.11:7001
+15/12/24 00:54:40 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_996958/split.done
+15/12/24 00:54:40 INFO hdfs.FMSClient: Write 9288676112051131 in pipeline 10.215.146.59:7001, 10.213.106.33:7001, 10.213.106.20:7001
+15/12/24 00:54:40 INFO mapred.JobClient: Running job: job_20151126032920_996958
+15/12/24 00:54:40 INFO mapred.JobClient: To kill this job, run:
+15/12/24 00:54:40 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_996958
+15/12/24 00:54:40 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_996958
+15/12/24 00:54:57 INFO mapred.JobClient: Total split num: 10
+15/12/24 00:54:57 INFO mapred.JobClient: Total split size: 2905 (bytes)
+15/12/24 00:54:57 INFO mapred.JobClient: Total split time: 183 (ms)
+15/12/24 00:54:58 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 00:55:56 INFO mapred.JobClient:  map 10% reduce 0%
+15/12/24 00:56:07 INFO mapred.JobClient:  map 60% reduce 0%
+15/12/24 00:56:17 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 00:56:37 INFO mapred.JobClient:  map 100% reduce 30%
+15/12/24 00:56:47 INFO mapred.JobClient:  map 100% reduce 90%
+15/12/24 00:56:53 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 00:56:53 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 00:56:53 INFO mapred.JobClient: Job complete: job_20151126032920_996958
+15/12/24 00:56:53 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_7
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=6+1 ))
++ '[' 7 -lt 30 ']'
++ (( idx_out=7+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_8
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_8
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_8
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_8 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_7 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 00:56:54 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 00:56:54 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob7281812755386126858.jar tmpDir=null
+15/12/24 00:56:55 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 00:56:55 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 00:56:55 INFO hdfs.FMSClient: Write 34621423415211487 in pipeline 10.215.61.43:7001, 10.215.147.56:7001, 10.215.147.61:7001, 10.215.213.11:7001, 10.215.76.45:7001, 10.215.205.34:7001, 10.213.193.23:7001, 10.213.96.23:7001, 10.213.133.39:7001, 10.213.35.41:7001
+15/12/24 00:56:56 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 00:56:56 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 00:56:56 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 00:56:56 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 00:56:56 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_7
+15/12/24 00:56:56 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 00:56:56 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 00:56:56 INFO hdfs.FMSClient: Write 5629501416076918 in pipeline 10.213.160.31:7001, 10.213.60.36:7001, 10.213.60.11:7001
+15/12/24 00:56:57 INFO mapred.JobClient: splits size : 10
+15/12/24 00:56:57 INFO hdfs.FMSClient: Write 36873223228855734 in pipeline 10.213.90.39:7001, 10.213.127.11:7001, 10.213.127.12:7001
+15/12/24 00:56:57 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_997015/split.done
+15/12/24 00:56:57 INFO hdfs.FMSClient: Write 7036876298932810 in pipeline 10.213.83.35:7001, 10.213.190.38:7001, 10.213.190.37:7001
+15/12/24 00:56:58 INFO mapred.JobClient: Running job: job_20151126032920_997015
+15/12/24 00:56:58 INFO mapred.JobClient: To kill this job, run:
+15/12/24 00:56:58 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_997015
+15/12/24 00:56:58 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_997015
+15/12/24 00:57:15 INFO mapred.JobClient: Total split num: 10
+15/12/24 00:57:15 INFO mapred.JobClient: Total split size: 2905 (bytes)
+15/12/24 00:57:15 INFO mapred.JobClient: Total split time: 1092 (ms)
+15/12/24 00:57:16 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 00:59:35 INFO mapred.JobClient:  map 20% reduce 0%
+15/12/24 00:59:45 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 01:00:15 INFO mapred.JobClient:  map 100% reduce 60%
+15/12/24 01:00:17 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 01:00:17 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 01:00:17 INFO mapred.JobClient: Job complete: job_20151126032920_997015
+15/12/24 01:00:17 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_8
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=7+1 ))
++ '[' 8 -lt 30 ']'
++ (( idx_out=8+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_9
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_9
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_9
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_9 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_8 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 01:00:18 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 01:00:18 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob5486321989128928338.jar tmpDir=null
+15/12/24 01:00:19 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 01:00:19 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 01:00:19 INFO hdfs.FMSClient: Write 25614224761638722 in pipeline 10.215.220.56:7001, 10.215.220.33:7001, 10.215.132.65:7001, 10.215.121.61:7001, 10.213.140.42:7001, 10.213.140.33:7001, 10.213.59.12:7001, 10.213.30.11:7001, 10.213.84.30:7001, 10.214.36.35:7001
+15/12/24 01:00:19 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 01:00:19 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 01:00:19 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 01:00:19 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 01:00:19 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_8
+15/12/24 01:00:20 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 01:00:20 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 01:00:20 INFO hdfs.FMSClient: Write 20266200204090718 in pipeline 10.215.205.40:7001, 10.213.67.25:7001, 10.213.67.27:7001
+15/12/24 01:00:20 INFO mapred.JobClient: splits size : 10
+15/12/24 01:00:20 INFO hdfs.FMSClient: Write 9570151088768747 in pipeline 10.213.109.41:7001, 10.215.224.60:7001, 10.215.224.16:7001
+15/12/24 01:00:20 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_997065/split.done
+15/12/24 01:00:20 INFO hdfs.FMSClient: Write 18014400391675763 in pipeline 10.213.193.15:7001, 10.214.224.23:7001, 10.214.224.24:7001
+15/12/24 01:00:20 INFO mapred.JobClient: Running job: job_20151126032920_997065
+15/12/24 01:00:20 INFO mapred.JobClient: To kill this job, run:
+15/12/24 01:00:20 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_997065
+15/12/24 01:00:20 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_997065
+15/12/24 01:00:35 INFO mapred.JobClient: Total split num: 10
+15/12/24 01:00:35 INFO mapred.JobClient: Total split size: 2905 (bytes)
+15/12/24 01:00:35 INFO mapred.JobClient: Total split time: 276 (ms)
+15/12/24 01:00:36 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 01:08:44 INFO mapred.JobClient:  map 20% reduce 0%
+15/12/24 01:08:54 INFO mapred.JobClient:  map 50% reduce 0%
+15/12/24 01:09:04 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 01:11:24 INFO mapred.JobClient:  map 100% reduce 20%
+15/12/24 01:11:34 INFO mapred.JobClient:  map 100% reduce 40%
+15/12/24 01:11:44 INFO mapred.JobClient:  map 100% reduce 90%
+15/12/24 01:11:53 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 01:11:53 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 01:11:53 INFO mapred.JobClient: Job complete: job_20151126032920_997065
+15/12/24 01:11:54 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_9
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=8+1 ))
++ '[' 9 -lt 30 ']'
++ (( idx_out=9+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_10
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_10
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_10
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_10 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_9 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 01:11:55 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 01:11:55 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob2705913549397965679.jar tmpDir=null
+15/12/24 01:11:55 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 01:11:55 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 01:11:56 INFO hdfs.FMSClient: Write 22799474994693850 in pipeline 10.213.96.16:7001, 10.213.200.16:7001, 10.213.206.11:7001, 10.213.112.41:7001, 10.213.136.29:7001, 10.215.233.19:7001, 10.215.233.52:7001, 10.215.210.52:7001, 10.215.158.42:7001, 10.215.235.62:7001
+15/12/24 01:11:56 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 01:11:56 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 01:11:56 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 01:11:56 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 01:11:56 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_9
+15/12/24 01:11:58 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 01:11:58 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 01:11:58 INFO hdfs.FMSClient: Write 33495523508245458 in pipeline 10.213.200.38:7001, 10.213.101.22:7001, 10.213.101.25:7001
+15/12/24 01:12:01 INFO mapred.JobClient: splits size : 10
+15/12/24 01:12:01 INFO hdfs.FMSClient: Write 16044075553878119 in pipeline 10.213.90.13:7001, 10.215.218.18:7001, 10.215.218.42:7001
+15/12/24 01:12:01 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_997540/split.done
+15/12/24 01:12:01 INFO hdfs.FMSClient: Write 15762600577167469 in pipeline 10.213.108.42:7001, 10.215.239.62:7001, 10.215.239.58:7001
+15/12/24 01:12:01 INFO mapred.JobClient: Running job: job_20151126032920_997540
+15/12/24 01:12:01 INFO mapred.JobClient: To kill this job, run:
+15/12/24 01:12:01 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_997540
+15/12/24 01:12:01 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_997540
+15/12/24 01:12:19 INFO mapred.JobClient: Total split num: 10
+15/12/24 01:12:19 INFO mapred.JobClient: Total split size: 2905 (bytes)
+15/12/24 01:12:19 INFO mapred.JobClient: Total split time: 5062 (ms)
+15/12/24 01:12:20 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 01:32:31 INFO mapred.JobClient:  map 40% reduce 0%
+15/12/24 01:32:41 INFO mapred.JobClient:  map 90% reduce 0%
+15/12/24 01:32:51 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 01:33:10 INFO mapred.JobClient:  map 100% reduce 10%
+15/12/24 01:33:20 INFO mapred.JobClient:  map 100% reduce 80%
+15/12/24 01:33:23 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 01:33:23 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 01:33:23 INFO mapred.JobClient: Job complete: job_20151126032920_997540
+15/12/24 01:33:24 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_10
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=9+1 ))
++ '[' 10 -lt 30 ']'
++ (( idx_out=10+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_11
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_11
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_11
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_11 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_10 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 01:33:25 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 01:33:25 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob855116608258549030.jar tmpDir=null
+15/12/24 01:33:25 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 01:33:25 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 01:33:26 INFO hdfs.FMSClient: Write 35184373368674100 in pipeline 10.215.230.13:7001, 10.215.210.17:7001, 10.215.210.60:7001, 10.215.200.12:7001, 10.215.112.61:7001, 10.215.55.53:7001, 10.215.193.16:7001, 10.215.198.34:7001, 10.213.206.31:7001, 10.214.236.61:7001
+15/12/24 01:33:26 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 01:33:26 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 01:33:26 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 01:33:26 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 01:33:26 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_10
+15/12/24 01:33:26 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 01:33:26 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 01:33:26 INFO hdfs.FMSClient: Write 16325550530611245 in pipeline 10.215.158.24:7001, 10.213.149.13:7001, 10.213.149.17:7001
+15/12/24 01:33:26 INFO mapred.JobClient: splits size : 10
+15/12/24 01:33:26 INFO hdfs.FMSClient: Write 32932573554847153 in pipeline 10.213.152.11:7001, 10.213.67.28:7001, 10.213.67.32:7001
+15/12/24 01:33:26 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_998008/split.done
+15/12/24 01:33:27 INFO hdfs.FMSClient: Write 37717648159028064 in pipeline 10.213.110.13:7001, 10.215.76.12:7001, 10.215.76.11:7001
+15/12/24 01:33:27 INFO mapred.JobClient: Running job: job_20151126032920_998008
+15/12/24 01:33:27 INFO mapred.JobClient: To kill this job, run:
+15/12/24 01:33:27 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_998008
+15/12/24 01:33:27 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_998008
+15/12/24 01:33:41 INFO mapred.JobClient: Total split num: 10
+15/12/24 01:33:41 INFO mapred.JobClient: Total split size: 2915 (bytes)
+15/12/24 01:33:41 INFO mapred.JobClient: Total split time: 499 (ms)
+15/12/24 01:33:42 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 01:43:01 INFO mapred.JobClient:  map 30% reduce 0%
+15/12/24 01:43:11 INFO mapred.JobClient:  map 70% reduce 0%
+15/12/24 01:43:22 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 01:44:02 INFO mapred.JobClient:  map 100% reduce 40%
+15/12/24 01:44:11 INFO mapred.JobClient:  map 100% reduce 80%
+15/12/24 01:44:16 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 01:44:16 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 01:44:16 INFO mapred.JobClient: Job complete: job_20151126032920_998008
+15/12/24 01:44:17 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_11
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=10+1 ))
++ '[' 11 -lt 30 ']'
++ (( idx_out=11+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_12
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_12
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_12
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_12 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_11 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 01:44:18 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 01:44:18 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob3972253297978484278.jar tmpDir=null
+15/12/24 01:44:18 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 01:44:18 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 01:44:18 INFO hdfs.FMSClient: Write 12384900856646358 in pipeline 10.213.99.29:7001, 10.213.99.25:7001, 10.213.106.18:7001, 10.213.100.16:7001, 10.213.200.26:7001, 10.213.179.21:7001, 10.213.108.29:7001, 10.215.156.59:7001, 10.215.227.11:7001, 10.215.227.64:7001
+15/12/24 01:44:19 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 01:44:19 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 01:44:19 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 01:44:19 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 01:44:19 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_11
+15/12/24 01:44:19 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 01:44:19 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 01:44:19 INFO hdfs.FMSClient: Write 1125901788074280 in pipeline 10.215.199.64:7001, 10.215.22.16:7001, 10.215.22.14:7001
+15/12/24 01:44:19 INFO mapred.JobClient: splits size : 10
+15/12/24 01:44:19 INFO hdfs.FMSClient: Write 5910976392143128 in pipeline 10.213.28.22:7001, 10.213.118.34:7001, 10.213.118.39:7001
+15/12/24 01:44:19 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_998225/split.done
+15/12/24 01:44:20 INFO hdfs.FMSClient: Write 38562073089172711 in pipeline 10.215.233.24:7001, 10.213.158.21:7001, 10.213.158.39:7001
+15/12/24 01:44:20 INFO mapred.JobClient: Running job: job_20151126032920_998225
+15/12/24 01:44:20 INFO mapred.JobClient: To kill this job, run:
+15/12/24 01:44:20 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_998225
+15/12/24 01:44:20 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_998225
+15/12/24 01:44:40 INFO mapred.JobClient: Total split num: 10
+15/12/24 01:44:40 INFO mapred.JobClient: Total split size: 2915 (bytes)
+15/12/24 01:44:40 INFO mapred.JobClient: Total split time: 220 (ms)
+15/12/24 01:44:41 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 01:46:10 INFO mapred.JobClient:  map 20% reduce 0%
+15/12/24 01:46:20 INFO mapred.JobClient:  map 90% reduce 0%
+15/12/24 01:46:30 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 01:46:59 INFO mapred.JobClient:  map 100% reduce 20%
+15/12/24 01:47:10 INFO mapred.JobClient:  map 100% reduce 90%
+15/12/24 01:47:16 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 01:47:16 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 01:47:16 INFO mapred.JobClient: Job complete: job_20151126032920_998225
+15/12/24 01:47:16 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_12
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=11+1 ))
++ '[' 12 -lt 30 ']'
++ (( idx_out=12+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_13
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_13
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_13
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_13 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_12 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 01:47:18 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 01:47:18 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob1875061258759269780.jar tmpDir=null
+15/12/24 01:47:18 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 01:47:18 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 01:47:18 INFO hdfs.FMSClient: Write 6755401322279033 in pipeline 10.215.238.18:7001, 10.215.228.52:7001, 10.215.156.51:7001, 10.215.184.40:7001, 10.213.30.25:7001, 10.213.141.39:7001, 10.213.141.27:7001, 10.213.116.29:7001, 10.213.108.20:7001, 10.213.201.28:7001
+15/12/24 01:47:19 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 01:47:19 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 01:47:19 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 01:47:19 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 01:47:19 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_12
+15/12/24 01:47:19 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 01:47:19 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 01:47:19 INFO hdfs.FMSClient: Write 34339948438558515 in pipeline 10.215.140.11:7001, 10.213.81.36:7001, 10.213.81.29:7001
+15/12/24 01:47:19 INFO mapred.JobClient: splits size : 10
+15/12/24 01:47:19 INFO hdfs.FMSClient: Write 24488324854997381 in pipeline 10.215.132.53:7001, 10.213.152.41:7001, 10.213.152.11:7001
+15/12/24 01:47:20 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_998328/split.done
+15/12/24 01:47:20 INFO hdfs.FMSClient: Write 39125023042597936 in pipeline 10.215.232.21:7001, 10.215.226.36:7001, 10.215.226.17:7001
+15/12/24 01:47:20 INFO mapred.JobClient: Running job: job_20151126032920_998328
+15/12/24 01:47:20 INFO mapred.JobClient: To kill this job, run:
+15/12/24 01:47:20 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_998328
+15/12/24 01:47:20 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_998328
+15/12/24 01:47:36 INFO mapred.JobClient: Total split num: 10
+15/12/24 01:47:36 INFO mapred.JobClient: Total split size: 2915 (bytes)
+15/12/24 01:47:36 INFO mapred.JobClient: Total split time: 460 (ms)
+15/12/24 01:47:37 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 01:48:46 INFO mapred.JobClient:  map 10% reduce 0%
+15/12/24 01:48:57 INFO mapred.JobClient:  map 40% reduce 0%
+15/12/24 01:49:06 INFO mapred.JobClient:  map 90% reduce 0%
+15/12/24 01:49:16 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 01:49:46 INFO mapred.JobClient:  map 100% reduce 60%
+15/12/24 01:49:52 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 01:49:52 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 01:49:52 INFO mapred.JobClient: Job complete: job_20151126032920_998328
+15/12/24 01:49:53 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_13
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=12+1 ))
++ '[' 13 -lt 30 ']'
++ (( idx_out=13+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_14
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_14
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_14
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_14 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_13 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 01:49:54 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 01:49:54 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob1582819058183284363.jar tmpDir=null
+15/12/24 01:49:54 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 01:49:54 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 01:49:55 INFO hdfs.FMSClient: Write 7036876298992840 in pipeline 10.215.58.11:7001, 10.215.181.23:7001, 10.215.181.13:7001, 10.215.197.40:7001, 10.215.234.18:7001, 10.214.235.22:7001, 10.213.169.12:7001, 10.213.112.24:7001, 10.213.79.28:7001, 10.213.146.41:7001
+15/12/24 01:50:02 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 01:50:02 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 01:50:02 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 01:50:02 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 01:50:02 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_13
+15/12/24 01:50:03 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 01:50:03 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 01:50:03 INFO hdfs.FMSClient: Write 3940651555872533 in pipeline 10.213.150.17:7001, 10.215.132.62:7001, 10.215.132.65:7001
+15/12/24 01:50:03 INFO mapred.JobClient: splits size : 10
+15/12/24 01:50:03 INFO hdfs.FMSClient: Write 2533276671634312 in pipeline 10.213.169.29:7001, 10.213.173.13:7001, 10.213.173.12:7001
+15/12/24 01:50:03 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_998364/split.done
+15/12/24 01:50:03 INFO hdfs.FMSClient: Write 35184373368693794 in pipeline 10.214.217.13:7001, 10.213.86.36:7001, 10.213.86.12:7001
+15/12/24 01:50:03 INFO mapred.JobClient: Running job: job_20151126032920_998364
+15/12/24 01:50:03 INFO mapred.JobClient: To kill this job, run:
+15/12/24 01:50:03 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_998364
+15/12/24 01:50:03 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_998364
+15/12/24 01:50:20 INFO mapred.JobClient: Total split num: 10
+15/12/24 01:50:20 INFO mapred.JobClient: Total split size: 2915 (bytes)
+15/12/24 01:50:20 INFO mapred.JobClient: Total split time: 450 (ms)
+15/12/24 01:50:21 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 01:51:20 INFO mapred.JobClient:  map 10% reduce 0%
+15/12/24 01:51:30 INFO mapred.JobClient:  map 70% reduce 0%
+15/12/24 01:51:40 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 01:52:09 INFO mapred.JobClient:  map 100% reduce 56%
+15/12/24 01:52:19 INFO mapred.JobClient:  map 100% reduce 90%
+15/12/24 01:52:50 INFO mapred.JobClient:  map 100% reduce 96%
+15/12/24 01:52:51 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 01:52:51 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 01:52:51 INFO mapred.JobClient: Job complete: job_20151126032920_998364
+15/12/24 01:52:51 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_14
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=13+1 ))
++ '[' 14 -lt 30 ']'
++ (( idx_out=14+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_15
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_15
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_15
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_15 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_14 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 01:52:52 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 01:52:52 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob8276633851780629156.jar tmpDir=null
+15/12/24 01:52:53 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 01:52:53 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 01:52:53 INFO hdfs.FMSClient: Write 33214048531580342 in pipeline 10.213.80.34:7001, 10.213.200.27:7001, 10.213.111.41:7001, 10.213.157.27:7001, 10.213.185.40:7001, 10.215.197.42:7001, 10.215.216.34:7001, 10.215.217.51:7001, 10.215.217.22:7001, 10.215.140.21:7001
+15/12/24 01:52:54 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 01:52:54 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 01:52:54 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 01:52:54 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 01:52:54 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_14
+15/12/24 01:52:54 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 01:52:54 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 01:52:54 INFO hdfs.FMSClient: Write 18014400391736859 in pipeline 10.215.235.53:7001, 10.213.171.21:7001, 10.213.171.18:7001
+15/12/24 01:52:54 INFO mapred.JobClient: splits size : 10
+15/12/24 01:52:54 INFO hdfs.FMSClient: Write 23925374901582311 in pipeline 10.215.26.57:7001, 10.213.116.11:7001, 10.213.116.36:7001
+15/12/24 01:52:54 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_998442/split.done
+15/12/24 01:52:54 INFO hdfs.FMSClient: Write 10133101042248762 in pipeline 10.215.207.24:7001, 10.213.206.31:7001, 10.213.206.35:7001
+15/12/24 01:52:54 INFO mapred.JobClient: Running job: job_20151126032920_998442
+15/12/24 01:52:54 INFO mapred.JobClient: To kill this job, run:
+15/12/24 01:52:54 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_998442
+15/12/24 01:52:54 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_998442
+15/12/24 01:53:09 INFO mapred.JobClient: Total split num: 10
+15/12/24 01:53:09 INFO mapred.JobClient: Total split size: 2915 (bytes)
+15/12/24 01:53:09 INFO mapred.JobClient: Total split time: 223 (ms)
+15/12/24 01:53:10 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 01:53:39 INFO mapred.JobClient:  map 20% reduce 0%
+15/12/24 01:53:49 INFO mapred.JobClient:  map 70% reduce 0%
+15/12/24 01:53:59 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 01:54:19 INFO mapred.JobClient:  map 100% reduce 50%
+15/12/24 01:54:27 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 01:54:27 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 01:54:27 INFO mapred.JobClient: Job complete: job_20151126032920_998442
+15/12/24 01:54:27 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_15
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=14+1 ))
++ '[' 15 -lt 30 ']'
++ (( idx_out=15+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_16
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_16
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_16
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_16 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_15 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 01:54:29 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 01:54:29 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob572435766092975355.jar tmpDir=null
+15/12/24 01:54:30 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 01:54:30 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 01:54:30 INFO hdfs.FMSClient: Write 6192451368865941 in pipeline 10.213.168.18:7001, 10.213.190.25:7001, 10.213.169.18:7001, 10.213.68.12:7001, 10.213.136.38:7001, 10.213.185.21:7001, 10.213.86.32:7001, 10.215.205.14:7001, 10.215.205.38:7001, 10.215.230.22:7001
+15/12/24 01:54:31 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 01:54:31 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 01:54:31 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 01:54:31 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 01:54:31 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_15
+15/12/24 01:54:31 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 01:54:31 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 01:54:31 INFO hdfs.FMSClient: Write 3659176579166833 in pipeline 10.213.157.39:7001, 10.215.228.22:7001, 10.215.228.51:7001
+15/12/24 01:54:31 INFO mapred.JobClient: splits size : 10
+15/12/24 01:54:31 INFO hdfs.FMSClient: Write 6192451368865959 in pipeline 10.213.110.13:7001, 10.215.153.57:7001, 10.215.153.33:7001
+15/12/24 01:54:31 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_998463/split.done
+15/12/24 01:54:31 INFO hdfs.FMSClient: Write 12666375833368651 in pipeline 10.215.146.59:7001, 10.215.215.16:7001, 10.215.215.11:7001
+15/12/24 01:54:32 INFO mapred.JobClient: Running job: job_20151126032920_998463
+15/12/24 01:54:32 INFO mapred.JobClient: To kill this job, run:
+15/12/24 01:54:32 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_998463
+15/12/24 01:54:32 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_998463
+15/12/24 01:54:51 INFO mapred.JobClient: Total split num: 10
+15/12/24 01:54:51 INFO mapred.JobClient: Total split size: 2915 (bytes)
+15/12/24 01:54:51 INFO mapred.JobClient: Total split time: 548 (ms)
+15/12/24 01:54:52 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 01:55:41 INFO mapred.JobClient:  map 20% reduce 0%
+15/12/24 01:55:51 INFO mapred.JobClient:  map 50% reduce 0%
+15/12/24 01:56:02 INFO mapred.JobClient:  map 80% reduce 0%
+15/12/24 01:56:12 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 01:56:31 INFO mapred.JobClient:  map 100% reduce 39%
+15/12/24 01:56:41 INFO mapred.JobClient:  map 100% reduce 68%
+15/12/24 01:56:48 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 01:56:48 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 01:56:48 INFO mapred.JobClient: Job complete: job_20151126032920_998463
+15/12/24 01:56:48 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_16
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=15+1 ))
++ '[' 16 -lt 30 ']'
++ (( idx_out=16+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_17
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_17
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_17
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_17 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_16 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 01:56:49 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 01:56:49 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob8059478820853863355.jar tmpDir=null
+15/12/24 01:56:50 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 01:56:50 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 01:56:50 INFO hdfs.FMSClient: Write 25332749785139858 in pipeline 10.214.232.45:7001, 10.213.108.15:7001, 10.213.108.28:7001, 10.213.117.42:7001, 10.213.26.11:7001, 10.213.101.38:7001, 10.213.146.33:7001, 10.215.202.24:7001, 10.215.139.60:7001, 10.215.235.38:7001
+15/12/24 01:56:50 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 01:56:50 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 01:56:50 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 01:56:50 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 01:56:50 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_16
+15/12/24 01:56:50 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 01:56:50 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 01:56:50 INFO hdfs.FMSClient: Write 36028798298833318 in pipeline 10.214.251.23:7001, 10.215.185.61:7001, 10.215.185.33:7001
+15/12/24 01:56:50 INFO mapred.JobClient: splits size : 10
+15/12/24 01:56:50 INFO hdfs.FMSClient: Write 14918175647085304 in pipeline 10.213.184.31:7001, 10.215.240.61:7001, 10.215.240.55:7001
+15/12/24 01:56:51 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_998528/split.done
+15/12/24 01:56:51 INFO hdfs.FMSClient: Write 8444251182553757 in pipeline 10.215.156.23:7001, 10.215.153.11:7001, 10.215.153.36:7001
+15/12/24 01:56:51 INFO mapred.JobClient: Running job: job_20151126032920_998528
+15/12/24 01:56:51 INFO mapred.JobClient: To kill this job, run:
+15/12/24 01:56:51 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_998528
+15/12/24 01:56:51 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_998528
+15/12/24 01:57:08 INFO mapred.JobClient: Total split num: 10
+15/12/24 01:57:08 INFO mapred.JobClient: Total split size: 2915 (bytes)
+15/12/24 01:57:08 INFO mapred.JobClient: Total split time: 218 (ms)
+15/12/24 01:57:09 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 01:57:58 INFO mapred.JobClient:  map 30% reduce 0%
+15/12/24 01:58:08 INFO mapred.JobClient:  map 80% reduce 0%
+15/12/24 01:58:18 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 01:58:38 INFO mapred.JobClient:  map 100% reduce 20%
+15/12/24 01:58:48 INFO mapred.JobClient:  map 100% reduce 96%
+15/12/24 01:58:51 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 01:58:51 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 01:58:51 INFO mapred.JobClient: Job complete: job_20151126032920_998528
+15/12/24 01:58:51 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_17
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=16+1 ))
++ '[' 17 -lt 30 ']'
++ (( idx_out=17+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_18
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_18
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_18
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_18 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_17 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 01:58:52 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 01:58:52 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob2985220358009031501.jar tmpDir=null
+15/12/24 01:58:53 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 01:58:53 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 01:58:53 INFO hdfs.FMSClient: Write 22518000017843861 in pipeline 10.213.188.19:7001, 10.213.188.12:7001, 10.213.138.13:7001, 10.213.93.40:7001, 10.215.180.38:7001, 10.215.180.42:7001, 10.215.217.43:7001, 10.215.32.17:7001, 10.215.235.39:7001, 10.214.216.12:7001
+15/12/24 01:58:55 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 01:58:55 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 01:58:55 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 01:58:55 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 01:58:55 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_17
+15/12/24 01:58:55 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 01:58:55 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 01:58:55 INFO hdfs.FMSClient: Write 39406498019322229 in pipeline 10.213.179.32:7001, 10.215.197.53:7001, 10.215.197.43:7001
+15/12/24 01:58:58 INFO mapred.JobClient: splits size : 10
+15/12/24 01:58:58 INFO hdfs.FMSClient: Write 7881301229135269 in pipeline 10.214.230.21:7001, 10.213.141.15:7001, 10.213.141.27:7001
+15/12/24 01:58:58 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_998553/split.done
+15/12/24 01:58:58 INFO hdfs.FMSClient: Write 13792275740216720 in pipeline 10.215.141.53:7001, 10.215.205.14:7001, 10.215.205.34:7001
+15/12/24 01:58:58 INFO mapred.JobClient: Running job: job_20151126032920_998553
+15/12/24 01:58:58 INFO mapred.JobClient: To kill this job, run:
+15/12/24 01:58:58 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_998553
+15/12/24 01:58:58 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_998553
+15/12/24 01:59:13 INFO mapred.JobClient: Total split num: 10
+15/12/24 01:59:13 INFO mapred.JobClient: Total split size: 2915 (bytes)
+15/12/24 01:59:13 INFO mapred.JobClient: Total split time: 3014 (ms)
+15/12/24 01:59:14 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 01:59:43 INFO mapred.JobClient:  map 20% reduce 0%
+15/12/24 01:59:53 INFO mapred.JobClient:  map 70% reduce 0%
+15/12/24 02:00:02 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 02:00:22 INFO mapred.JobClient:  map 100% reduce 40%
+15/12/24 02:00:29 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:00:29 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:00:29 INFO mapred.JobClient: Job complete: job_20151126032920_998553
+15/12/24 02:00:29 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_18
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=17+1 ))
++ '[' 18 -lt 30 ']'
++ (( idx_out=18+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_19
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_19
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_19
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_19 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_18 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 02:00:30 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 02:00:30 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob2001314190763371619.jar tmpDir=null
+15/12/24 02:00:30 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:00:31 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:00:31 INFO hdfs.FMSClient: Write 33776998485010983 in pipeline 10.215.229.53:7001, 10.215.157.18:7001, 10.215.232.25:7001, 10.215.209.24:7001, 10.213.84.24:7001, 10.213.65.11:7001, 10.213.130.16:7001, 10.213.130.26:7001, 10.213.108.29:7001, 10.213.127.37:7001
+15/12/24 02:00:31 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 02:00:31 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 02:00:31 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 02:00:31 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 02:00:31 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_18
+15/12/24 02:00:34 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 02:00:34 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 02:00:34 INFO hdfs.FMSClient: Write 1407376764803919 in pipeline 10.215.226.60:7001, 10.213.148.33:7001, 10.213.148.32:7001
+15/12/24 02:00:34 INFO mapred.JobClient: splits size : 10
+15/12/24 02:00:34 INFO hdfs.FMSClient: Write 5066551462727979 in pipeline 10.215.221.44:7001, 10.213.201.37:7001, 10.213.201.34:7001
+15/12/24 02:00:34 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_998591/split.done
+15/12/24 02:00:34 INFO hdfs.FMSClient: Write 19421775275299679 in pipeline 10.215.141.51:7001, 10.213.197.25:7001, 10.213.197.11:7001
+15/12/24 02:00:34 INFO mapred.JobClient: Running job: job_20151126032920_998591
+15/12/24 02:00:34 INFO mapred.JobClient: To kill this job, run:
+15/12/24 02:00:34 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_998591
+15/12/24 02:00:34 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_998591
+15/12/24 02:00:57 INFO mapred.JobClient: Total split num: 10
+15/12/24 02:00:57 INFO mapred.JobClient: Total split size: 2915 (bytes)
+15/12/24 02:00:57 INFO mapred.JobClient: Total split time: 3132 (ms)
+15/12/24 02:00:58 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 02:01:36 INFO mapred.JobClient:  map 20% reduce 0%
+15/12/24 02:01:47 INFO mapred.JobClient:  map 80% reduce 0%
+15/12/24 02:01:57 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 02:02:26 INFO mapred.JobClient:  map 100% reduce 10%
+15/12/24 02:02:36 INFO mapred.JobClient:  map 100% reduce 53%
+15/12/24 02:02:42 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:02:42 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:02:42 INFO mapred.JobClient: Job complete: job_20151126032920_998591
+15/12/24 02:02:43 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_19
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=18+1 ))
++ '[' 19 -lt 30 ']'
++ (( idx_out=19+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_20
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_20
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_20
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_20 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_19 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 02:02:44 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 02:02:44 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob4995104665212431751.jar tmpDir=null
+15/12/24 02:02:44 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:02:44 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:02:45 INFO hdfs.FMSClient: Write 27866024575397058 in pipeline 10.215.228.16:7001, 10.215.233.42:7001, 10.215.233.19:7001, 10.215.217.11:7001, 10.215.193.55:7001, 10.213.182.29:7001, 10.213.81.18:7001, 10.213.162.12:7001, 10.213.117.22:7001, 10.214.22.33:7001
+15/12/24 02:02:45 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 02:02:45 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 02:02:45 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 02:02:45 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 02:02:45 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_19
+15/12/24 02:02:45 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 02:02:45 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 02:02:45 INFO hdfs.FMSClient: Write 5348026439441972 in pipeline 10.215.160.13:7001, 10.213.138.34:7001, 10.213.138.36:7001
+15/12/24 02:02:45 INFO mapred.JobClient: splits size : 10
+15/12/24 02:02:45 INFO hdfs.FMSClient: Write 41939772809607286 in pipeline 10.213.121.11:7001, 10.215.205.35:7001, 10.215.205.63:7001
+15/12/24 02:02:45 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_998661/split.done
+15/12/24 02:02:45 INFO hdfs.FMSClient: Write 24206849878305532 in pipeline 10.215.30.11:7001, 10.215.237.54:7001, 10.215.237.42:7001
+15/12/24 02:02:45 INFO mapred.JobClient: Running job: job_20151126032920_998661
+15/12/24 02:02:45 INFO mapred.JobClient: To kill this job, run:
+15/12/24 02:02:45 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_998661
+15/12/24 02:02:45 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_998661
+15/12/24 02:03:03 INFO mapred.JobClient: Total split num: 10
+15/12/24 02:03:03 INFO mapred.JobClient: Total split size: 2915 (bytes)
+15/12/24 02:03:03 INFO mapred.JobClient: Total split time: 191 (ms)
+15/12/24 02:03:04 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 02:05:53 INFO mapred.JobClient:  map 10% reduce 0%
+15/12/24 02:06:03 INFO mapred.JobClient:  map 50% reduce 0%
+15/12/24 02:06:13 INFO mapred.JobClient:  map 90% reduce 0%
+15/12/24 02:06:22 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 02:06:32 INFO mapred.JobClient:  map 100% reduce 40%
+15/12/24 02:06:42 INFO mapred.JobClient:  map 100% reduce 90%
+15/12/24 02:06:53 INFO mapred.JobClient:  map 100% reduce 96%
+15/12/24 02:06:55 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:06:55 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:06:55 INFO mapred.JobClient: Job complete: job_20151126032920_998661
+15/12/24 02:06:55 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_20
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=19+1 ))
++ '[' 20 -lt 30 ']'
++ (( idx_out=20+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_21
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_21
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_21
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_21 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_20 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 02:06:56 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 02:06:56 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob5693850585499722890.jar tmpDir=null
+15/12/24 02:06:56 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:06:56 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:06:56 INFO hdfs.FMSClient: Write 37154698205648205 in pipeline 10.215.133.42:7001, 10.215.175.42:7001, 10.215.195.60:7001, 10.213.154.26:7001, 10.213.154.11:7001, 10.213.89.36:7001, 10.213.36.11:7001, 10.213.135.39:7001, 10.213.171.17:7001, 10.213.185.24:7001
+15/12/24 02:06:57 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 02:06:57 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 02:06:57 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 02:06:57 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 02:06:57 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_20
+15/12/24 02:06:57 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 02:06:57 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 02:06:57 INFO hdfs.FMSClient: Write 3377701602472802 in pipeline 10.214.239.19:7001, 10.215.147.35:7001, 10.215.147.37:7001
+15/12/24 02:06:57 INFO mapred.JobClient: splits size : 10
+15/12/24 02:06:57 INFO hdfs.FMSClient: Write 9851626065556383 in pipeline 10.214.237.23:7001, 10.215.223.40:7001, 10.215.223.17:7001
+15/12/24 02:06:57 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_998758/split.done
+15/12/24 02:06:57 INFO hdfs.FMSClient: Write 24488324855021521 in pipeline 10.215.210.21:7001, 10.213.137.16:7001, 10.213.137.11:7001
+15/12/24 02:06:57 INFO mapred.JobClient: Running job: job_20151126032920_998758
+15/12/24 02:06:57 INFO mapred.JobClient: To kill this job, run:
+15/12/24 02:06:57 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_998758
+15/12/24 02:06:57 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_998758
+15/12/24 02:07:12 INFO mapred.JobClient: Total split num: 10
+15/12/24 02:07:12 INFO mapred.JobClient: Total split size: 2915 (bytes)
+15/12/24 02:07:12 INFO mapred.JobClient: Total split time: 151 (ms)
+15/12/24 02:07:13 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 02:09:32 INFO mapred.JobClient:  map 30% reduce 0%
+15/12/24 02:09:42 INFO mapred.JobClient:  map 90% reduce 0%
+15/12/24 02:09:52 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 02:10:22 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:10:22 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:10:22 INFO mapred.JobClient: Job complete: job_20151126032920_998758
+15/12/24 02:10:22 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_21
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=20+1 ))
++ '[' 21 -lt 30 ']'
++ (( idx_out=21+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_22
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_22
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_22
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_22 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_21 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 02:10:25 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 02:10:25 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob3520414226200940830.jar tmpDir=null
+15/12/24 02:10:26 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:10:26 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:10:26 INFO hdfs.FMSClient: Write 31525198671338504 in pipeline 10.213.200.35:7001, 10.213.68.24:7001, 10.213.68.26:7001, 10.213.96.36:7001, 10.215.56.18:7001, 10.215.206.16:7001, 10.215.215.61:7001, 10.215.214.63:7001, 10.215.209.42:7001, 10.214.230.42:7001
+15/12/24 02:10:26 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 02:10:26 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 02:10:26 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 02:10:26 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 02:10:26 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_21
+15/12/24 02:10:27 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 02:10:27 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 02:10:27 INFO hdfs.FMSClient: Write 4222126532609058 in pipeline 10.213.40.20:7001, 10.213.106.25:7001, 10.213.106.28:7001
+15/12/24 02:10:27 INFO mapred.JobClient: splits size : 10
+15/12/24 02:10:27 INFO hdfs.FMSClient: Write 8725726158717911 in pipeline 10.213.109.42:7001, 10.213.203.34:7001, 10.213.203.14:7001
+15/12/24 02:10:27 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_998847/split.done
+15/12/24 02:10:27 INFO hdfs.FMSClient: Write 34058473461877182 in pipeline 10.213.171.26:7001, 10.215.139.65:7001, 10.215.139.52:7001
+15/12/24 02:10:27 INFO mapred.JobClient: Running job: job_20151126032920_998847
+15/12/24 02:10:27 INFO mapred.JobClient: To kill this job, run:
+15/12/24 02:10:27 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_998847
+15/12/24 02:10:27 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_998847
+15/12/24 02:10:51 INFO mapred.JobClient: Total split num: 10
+15/12/24 02:10:51 INFO mapred.JobClient: Total split size: 2915 (bytes)
+15/12/24 02:10:51 INFO mapred.JobClient: Total split time: 469 (ms)
+15/12/24 02:10:52 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 02:11:21 INFO mapred.JobClient:  map 10% reduce 0%
+15/12/24 02:11:31 INFO mapred.JobClient:  map 60% reduce 0%
+15/12/24 02:11:41 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 02:12:11 INFO mapred.JobClient:  map 100% reduce 40%
+15/12/24 02:12:15 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:12:15 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:12:15 INFO mapred.JobClient: Job complete: job_20151126032920_998847
+15/12/24 02:12:15 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_22
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=21+1 ))
++ '[' 22 -lt 30 ']'
++ (( idx_out=22+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_23
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_23
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_23
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_23 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_22 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 02:12:18 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 02:12:18 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob876793541393984165.jar tmpDir=null
+15/12/24 02:12:19 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:12:19 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:12:19 INFO hdfs.FMSClient: Write 11821950903260084 in pipeline 10.213.153.17:7001, 10.213.82.13:7001, 10.213.80.20:7001, 10.213.116.18:7001, 10.213.118.11:7001, 10.213.189.41:7001, 10.215.158.53:7001, 10.215.156.39:7001, 10.215.146.37:7001, 10.215.146.63:7001
+15/12/24 02:12:20 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 02:12:20 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 02:12:20 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 02:12:20 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 02:12:20 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_22
+15/12/24 02:12:20 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 02:12:20 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 02:12:20 INFO hdfs.FMSClient: Write 32088148624762365 in pipeline 10.213.79.36:7001, 10.215.199.53:7001, 10.215.199.40:7001
+15/12/24 02:12:20 INFO mapred.JobClient: splits size : 10
+15/12/24 02:12:20 INFO hdfs.FMSClient: Write 14073750716945355 in pipeline 10.215.146.15:7001, 10.215.214.60:7001, 10.215.214.57:7001
+15/12/24 02:12:20 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_998913/split.done
+15/12/24 02:12:20 INFO hdfs.FMSClient: Write 31806673648051715 in pipeline 10.214.230.62:7001, 10.215.233.38:7001, 10.215.233.45:7001
+15/12/24 02:12:20 INFO mapred.JobClient: Running job: job_20151126032920_998913
+15/12/24 02:12:20 INFO mapred.JobClient: To kill this job, run:
+15/12/24 02:12:20 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_998913
+15/12/24 02:12:20 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_998913
+15/12/24 02:12:38 INFO mapred.JobClient: Total split num: 10
+15/12/24 02:12:38 INFO mapred.JobClient: Total split size: 2915 (bytes)
+15/12/24 02:12:38 INFO mapred.JobClient: Total split time: 299 (ms)
+15/12/24 02:12:39 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 02:13:18 INFO mapred.JobClient:  map 10% reduce 0%
+15/12/24 02:13:28 INFO mapred.JobClient:  map 40% reduce 0%
+15/12/24 02:13:37 INFO mapred.JobClient:  map 90% reduce 0%
+15/12/24 02:13:47 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 02:14:18 INFO mapred.JobClient:  map 100% reduce 30%
+15/12/24 02:14:25 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:14:25 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:14:25 INFO mapred.JobClient: Job complete: job_20151126032920_998913
+15/12/24 02:14:25 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_23
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=22+1 ))
++ '[' 23 -lt 30 ']'
++ (( idx_out=23+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_24
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_24
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_24
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_24 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_23 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 02:14:27 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 02:14:27 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob8617265596712697539.jar tmpDir=null
+15/12/24 02:14:27 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:14:27 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:14:27 INFO hdfs.FMSClient: Write 32369623601475707 in pipeline 10.215.184.42:7001, 10.215.26.57:7001, 10.215.26.52:7001, 10.215.223.57:7001, 10.215.152.58:7001, 10.213.175.31:7001, 10.213.67.29:7001, 10.213.100.14:7001, 10.213.108.15:7001, 10.213.93.41:7001
+15/12/24 02:14:28 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 02:14:28 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 02:14:28 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 02:14:28 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 02:14:28 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_23
+15/12/24 02:14:28 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 02:14:28 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 02:14:28 INFO hdfs.FMSClient: Write 38280598112500540 in pipeline 10.215.205.23:7001, 10.213.105.36:7001, 10.213.105.20:7001
+15/12/24 02:14:28 INFO mapred.JobClient: splits size : 10
+15/12/24 02:14:28 INFO hdfs.FMSClient: Write 1970326718243589 in pipeline 10.213.99.11:7001, 10.213.142.41:7001, 10.213.142.13:7001
+15/12/24 02:14:28 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_998964/split.done
+15/12/24 02:14:28 INFO hdfs.FMSClient: Write 19421775275318314 in pipeline 10.215.226.36:7001, 10.213.108.36:7001, 10.213.108.28:7001
+15/12/24 02:14:28 INFO mapred.JobClient: Running job: job_20151126032920_998964
+15/12/24 02:14:28 INFO mapred.JobClient: To kill this job, run:
+15/12/24 02:14:28 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_998964
+15/12/24 02:14:28 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_998964
+15/12/24 02:14:44 INFO mapred.JobClient: Total split num: 10
+15/12/24 02:14:44 INFO mapred.JobClient: Total split size: 2915 (bytes)
+15/12/24 02:14:44 INFO mapred.JobClient: Total split time: 227 (ms)
+15/12/24 02:14:45 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 02:15:33 INFO mapred.JobClient:  map 60% reduce 0%
+15/12/24 02:15:43 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 02:16:04 INFO mapred.JobClient:  map 100% reduce 10%
+15/12/24 02:16:13 INFO mapred.JobClient:  map 100% reduce 70%
+15/12/24 02:16:22 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:16:22 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:16:22 INFO mapred.JobClient: Job complete: job_20151126032920_998964
+15/12/24 02:16:22 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_24
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=23+1 ))
++ '[' 24 -lt 30 ']'
++ (( idx_out=24+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_25
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_25
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_25
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_25 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_24 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 02:16:24 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 02:16:24 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob3448216674237852983.jar tmpDir=null
+15/12/24 02:16:24 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:16:24 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:16:24 INFO hdfs.FMSClient: Write 37436173182370976 in pipeline 10.215.159.60:7001, 10.215.139.61:7001, 10.215.139.39:7001, 10.215.199.13:7001, 10.215.199.64:7001, 10.215.55.23:7001, 10.215.196.58:7001, 10.213.97.33:7001, 10.213.185.27:7001, 10.213.93.27:7001
+15/12/24 02:16:25 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 02:16:25 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 02:16:25 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 02:16:25 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 02:16:25 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_24
+15/12/24 02:16:25 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 02:16:25 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 02:16:25 INFO hdfs.FMSClient: Write 20829150157603341 in pipeline 10.213.109.39:7001, 10.215.193.32:7001, 10.215.193.16:7001
+15/12/24 02:16:25 INFO mapred.JobClient: splits size : 10
+15/12/24 02:16:25 INFO hdfs.FMSClient: Write 11821950903265030 in pipeline 10.214.22.31:7001, 10.213.117.15:7001, 10.213.117.30:7001
+15/12/24 02:16:25 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_999008/split.done
+15/12/24 02:16:25 INFO hdfs.FMSClient: Write 20266200204182043 in pipeline 10.215.21.18:7001, 10.213.193.18:7001, 10.213.193.25:7001
+15/12/24 02:16:29 INFO mapred.JobClient: Running job: job_20151126032920_999008
+15/12/24 02:16:29 INFO mapred.JobClient: To kill this job, run:
+15/12/24 02:16:29 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_999008
+15/12/24 02:16:29 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_999008
+15/12/24 02:16:47 INFO mapred.JobClient: Total split num: 10
+15/12/24 02:16:47 INFO mapred.JobClient: Total split size: 2915 (bytes)
+15/12/24 02:16:47 INFO mapred.JobClient: Total split time: 445 (ms)
+15/12/24 02:16:48 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 02:17:18 INFO mapred.JobClient:  map 50% reduce 0%
+15/12/24 02:17:28 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 02:17:57 INFO mapred.JobClient:  map 100% reduce 10%
+15/12/24 02:18:08 INFO mapred.JobClient:  map 100% reduce 90%
+15/12/24 02:18:10 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:18:10 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:18:10 INFO mapred.JobClient: Job complete: job_20151126032920_999008
+15/12/24 02:18:10 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_25
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=24+1 ))
++ '[' 25 -lt 30 ']'
++ (( idx_out=25+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_26
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_26
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_26
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_26 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_25 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 02:18:11 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 02:18:11 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob1943983277111623577.jar tmpDir=null
+15/12/24 02:18:11 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:18:11 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:18:11 INFO hdfs.FMSClient: Write 31243723694637780 in pipeline 10.213.134.20:7001, 10.213.158.21:7001, 10.213.149.37:7001, 10.213.163.30:7001, 10.213.91.40:7001, 10.213.193.14:7001, 10.215.139.52:7001, 10.215.232.65:7001, 10.214.22.31:7001, 10.214.22.14:7001
+15/12/24 02:18:12 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 02:18:12 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 02:18:12 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 02:18:12 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 02:18:12 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_25
+15/12/24 02:18:12 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 02:18:12 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 02:18:12 INFO hdfs.FMSClient: Write 1407376764827123 in pipeline 10.214.240.17:7001, 10.214.251.24:7001, 10.214.251.36:7001
+15/12/24 02:18:12 INFO mapred.JobClient: splits size : 10
+15/12/24 02:18:12 INFO hdfs.FMSClient: Write 17451450438348674 in pipeline 10.215.153.19:7001, 10.215.45.63:7001, 10.215.45.64:7001
+15/12/24 02:18:12 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_999038/split.done
+15/12/24 02:18:12 INFO hdfs.FMSClient: Write 35747323322151207 in pipeline 10.213.134.24:7001, 10.213.40.34:7001, 10.213.40.14:7001
+15/12/24 02:18:13 INFO mapred.JobClient: Running job: job_20151126032920_999038
+15/12/24 02:18:13 INFO mapred.JobClient: To kill this job, run:
+15/12/24 02:18:13 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_999038
+15/12/24 02:18:13 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_999038
+15/12/24 02:18:31 INFO mapred.JobClient: Total split num: 10
+15/12/24 02:18:31 INFO mapred.JobClient: Total split size: 2915 (bytes)
+15/12/24 02:18:31 INFO mapred.JobClient: Total split time: 196 (ms)
+15/12/24 02:18:32 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 02:19:10 INFO mapred.JobClient:  map 50% reduce 0%
+15/12/24 02:19:20 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 02:20:01 INFO mapred.JobClient:  map 100% reduce 30%
+15/12/24 02:20:11 INFO mapred.JobClient:  map 100% reduce 80%
+15/12/24 02:20:12 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:20:12 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:20:12 INFO mapred.JobClient: Job complete: job_20151126032920_999038
+15/12/24 02:20:12 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_26
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=25+1 ))
++ '[' 26 -lt 30 ']'
++ (( idx_out=26+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_27
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_27
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_27
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_27 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_26 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 02:20:15 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 02:20:15 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob1226391328565413437.jar tmpDir=null
+15/12/24 02:20:15 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:20:16 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:20:16 INFO hdfs.FMSClient: Write 3096226625779173 in pipeline 10.215.46.15:7001, 10.215.246.33:7001, 10.215.246.31:7001, 10.215.158.23:7001, 10.215.226.35:7001, 10.215.201.19:7001, 10.213.160.11:7001, 10.213.135.30:7001, 10.213.121.11:7001, 10.214.223.44:7001
+15/12/24 02:20:17 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 02:20:17 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 02:20:17 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 02:20:17 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 02:20:17 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_26
+15/12/24 02:20:17 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 02:20:17 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 02:20:17 INFO hdfs.FMSClient: Write 36028798298864468 in pipeline 10.213.148.24:7001, 10.215.147.18:7001, 10.215.147.36:7001
+15/12/24 02:20:17 INFO mapred.JobClient: splits size : 10
+15/12/24 02:20:17 INFO hdfs.FMSClient: Write 30117823787993862 in pipeline 10.213.80.19:7001, 10.213.86.26:7001, 10.213.86.18:7001
+15/12/24 02:20:17 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_999088/split.done
+15/12/24 02:20:18 INFO hdfs.FMSClient: Write 1688851741540350 in pipeline 10.213.47.11:7001, 10.213.89.21:7001, 10.213.89.26:7001
+15/12/24 02:20:18 INFO mapred.JobClient: Running job: job_20151126032920_999088
+15/12/24 02:20:18 INFO mapred.JobClient: To kill this job, run:
+15/12/24 02:20:18 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_999088
+15/12/24 02:20:18 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_999088
+15/12/24 02:20:35 INFO mapred.JobClient: Total split num: 10
+15/12/24 02:20:35 INFO mapred.JobClient: Total split size: 2915 (bytes)
+15/12/24 02:20:35 INFO mapred.JobClient: Total split time: 313 (ms)
+15/12/24 02:20:36 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 02:22:15 INFO mapred.JobClient:  map 10% reduce 0%
+15/12/24 02:22:25 INFO mapred.JobClient:  map 90% reduce 0%
+15/12/24 02:22:36 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 02:22:55 INFO mapred.JobClient:  map 100% reduce 10%
+15/12/24 02:23:05 INFO mapred.JobClient:  map 100% reduce 70%
+15/12/24 02:23:11 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:23:11 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:23:11 INFO mapred.JobClient: Job complete: job_20151126032920_999088
+15/12/24 02:23:11 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_27
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=26+1 ))
++ '[' 27 -lt 30 ']'
++ (( idx_out=27+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_28
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_28
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_28
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_28 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_27 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 02:23:13 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 02:23:13 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob2054231904377350326.jar tmpDir=null
+15/12/24 02:23:13 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:23:13 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:23:13 INFO hdfs.FMSClient: Write 28147499552134386 in pipeline 10.213.178.35:7001, 10.213.104.36:7001, 10.213.139.38:7001, 10.213.28.11:7001, 10.213.120.40:7001, 10.213.111.29:7001, 10.215.157.39:7001, 10.215.176.11:7001, 10.215.176.19:7001, 10.214.36.15:7001
+15/12/24 02:23:14 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 02:23:14 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 02:23:14 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 02:23:14 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 02:23:14 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_27
+15/12/24 02:23:14 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 02:23:14 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 02:23:14 INFO hdfs.FMSClient: Write 21110625134322922 in pipeline 10.215.198.12:7001, 10.215.224.60:7001, 10.215.224.17:7001
+15/12/24 02:23:14 INFO mapred.JobClient: splits size : 10
+15/12/24 02:23:14 INFO hdfs.FMSClient: Write 27303074622002432 in pipeline 10.215.52.36:7001, 10.215.228.15:7001, 10.215.228.14:7001
+15/12/24 02:23:14 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_999156/split.done
+15/12/24 02:23:14 INFO hdfs.FMSClient: Write 7881301229167374 in pipeline 10.215.210.19:7001, 10.213.26.11:7001, 10.213.26.33:7001
+15/12/24 02:23:14 INFO mapred.JobClient: Running job: job_20151126032920_999156
+15/12/24 02:23:14 INFO mapred.JobClient: To kill this job, run:
+15/12/24 02:23:14 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_999156
+15/12/24 02:23:14 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_999156
+15/12/24 02:23:34 INFO mapred.JobClient: Total split num: 10
+15/12/24 02:23:34 INFO mapred.JobClient: Total split size: 2915 (bytes)
+15/12/24 02:23:34 INFO mapred.JobClient: Total split time: 212 (ms)
+15/12/24 02:23:35 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 02:24:04 INFO mapred.JobClient:  map 10% reduce 0%
+15/12/24 02:24:14 INFO mapred.JobClient:  map 50% reduce 0%
+15/12/24 02:24:23 INFO mapred.JobClient:  map 90% reduce 0%
+15/12/24 02:24:33 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 02:24:54 INFO mapred.JobClient:  map 100% reduce 70%
+15/12/24 02:25:00 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:25:00 INFO mapred.JobClient: Job complete: job_20151126032920_999156
+15/12/24 02:25:00 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_28
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=27+1 ))
++ '[' 28 -lt 30 ']'
++ (( idx_out=28+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_29
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_29
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_29
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_29 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_28 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 02:25:01 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 02:25:01 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob4642807045723916880.jar tmpDir=null
+15/12/24 02:25:02 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:25:02 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:25:02 INFO hdfs.FMSClient: Write 13510800763540705 in pipeline 10.213.118.35:7001, 10.213.193.11:7001, 10.213.104.32:7001, 10.213.200.27:7001, 10.215.221.25:7001, 10.215.18.23:7001, 10.215.55.35:7001, 10.215.139.65:7001, 10.215.139.57:7001, 10.214.235.23:7001
+15/12/24 02:25:02 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 02:25:02 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 02:25:02 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 02:25:02 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 02:25:02 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_28
+15/12/24 02:25:02 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 02:25:02 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 02:25:02 INFO hdfs.FMSClient: Write 11540475926566129 in pipeline 10.215.237.37:7001, 10.215.194.63:7001, 10.215.194.36:7001
+15/12/24 02:25:02 INFO mapred.JobClient: splits size : 10
+15/12/24 02:25:02 INFO hdfs.FMSClient: Write 12666375833408754 in pipeline 10.213.144.29:7001, 10.213.184.17:7001, 10.213.184.33:7001
+15/12/24 02:25:03 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_999176/split.done
+15/12/24 02:25:03 INFO hdfs.FMSClient: Write 31806673648068111 in pipeline 10.215.76.34:7001, 10.213.82.26:7001, 10.213.82.13:7001
+15/12/24 02:25:03 INFO mapred.JobClient: Running job: job_20151126032920_999176
+15/12/24 02:25:03 INFO mapred.JobClient: To kill this job, run:
+15/12/24 02:25:03 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_999176
+15/12/24 02:25:03 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_999176
+15/12/24 02:25:22 INFO mapred.JobClient: Total split num: 10
+15/12/24 02:25:22 INFO mapred.JobClient: Total split size: 2915 (bytes)
+15/12/24 02:25:22 INFO mapred.JobClient: Total split time: 301 (ms)
+15/12/24 02:25:23 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 02:26:03 INFO mapred.JobClient:  map 80% reduce 0%
+15/12/24 02:26:13 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 02:26:33 INFO mapred.JobClient:  map 100% reduce 60%
+15/12/24 02:26:38 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:26:38 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:26:38 INFO mapred.JobClient: Job complete: job_20151126032920_999176
+15/12/24 02:26:39 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_29
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=28+1 ))
++ '[' 29 -lt 30 ']'
++ (( idx_out=29+1 ))
++ OUTPUT_DIR=/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_30
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop fs -rmr /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_30
+rmr: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_30
++ /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop//bin/hadoop streaming -output /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_30 -input /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_29 -mapper 'python/python/bin/python map-pr_mapreduce.py' -reducer 'python/python/bin/python reduce-pr_mapreduce.py' -file /home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py -file /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py -jobconf mapred.job.name=pr_mapreduce.wangbo01 -jobconf mapred.job.map.capacity=10 -jobconf mapred.job.reduce.capacity=10 -jobconf mapred.reduce.tasks=10 -jobconf mapred.job.priority=VERY_HIGH -cacheArchive /app/ps/spider/wdm-link-offline/wangbo01/python.tar.gz#python
+15/12/24 02:26:40 WARN streaming.StreamJob: -cacheArchive option is deprecated, please use -archives instead.
+15/12/24 02:26:40 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+packageJobJar: [/home/spider/wangbo01/study/pagerank/mapreduce/map-pr_mapreduce.py, /home/spider/wangbo01/study/pagerank/mapreduce/reduce-pr_mapreduce.py] [/home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/contrib/streaming/hadoop-2-streaming.jar] /tmp/streamjob2435356112000994651.jar tmpDir=null
+15/12/24 02:26:40 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:26:40 INFO mapred.JobClient: class org.apache.hadoop.security.UnixUserGroupInformation
+15/12/24 02:26:40 INFO hdfs.FMSClient: Write 41939772809637593 in pipeline 10.215.121.51:7001, 10.215.133.17:7001, 10.215.133.19:7001, 10.215.236.20:7001, 10.215.21.56:7001, 10.215.215.57:7001, 10.213.139.38:7001, 10.213.157.15:7001, 10.213.40.15:7001, 10.214.217.13:7001
+15/12/24 02:26:41 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+15/12/24 02:26:41 INFO compress.LzoCodec: Successfully loaded & initialized native-lzo library
+15/12/24 02:26:41 INFO compress.LzmaCodec: Successfully loaded & initialized native-lzma library
+15/12/24 02:26:41 INFO compress.QuickLzCodec: Successfully loaded & initialized native-quicklz library
+15/12/24 02:26:41 INFO mapred.FileInputFormat: getInputPaths: dirs: hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_29
+15/12/24 02:26:41 INFO mapred.FileInputFormat: Total input paths to process : 10
+15/12/24 02:26:41 WARN mapred.FileInputFormat: Split size is optimized by default, you can set 'abaci.split.optimize.enable=false' to skip it
+15/12/24 02:26:41 INFO hdfs.FMSClient: Write 10977525972424478 in pipeline 10.213.94.26:7001, 10.215.141.64:7001, 10.215.141.16:7001
+15/12/24 02:26:41 INFO mapred.JobClient: splits size : 10
+15/12/24 02:26:41 INFO hdfs.FMSClient: Write 22799474994783688 in pipeline 10.215.198.22:7001, 10.213.111.19:7001, 10.213.111.11:7001
+15/12/24 02:26:41 INFO split.SplitUtils: create hdfs://nj01-nanling-hdfs.dmop.baidu.com:54310/app/dc/deva/system/mapred/job_20151126032920_999226/split.done
+15/12/24 02:26:41 INFO hdfs.FMSClient: Write 9570151088871203 in pipeline 10.213.118.39:7001, 10.215.233.24:7001, 10.215.233.23:7001
+15/12/24 02:26:41 INFO mapred.JobClient: Running job: job_20151126032920_999226
+15/12/24 02:26:41 INFO mapred.JobClient: To kill this job, run:
+15/12/24 02:26:41 INFO mapred.JobClient: /home/disk0/wangbo01/hadoop-client-dir/hadoop-client-wdm-entities-off/hadoop/bin/../bin/hadoop job -Dmapred.job.tracker=nj01-nanling-job.dmop.baidu.com:54311 -kill job_20151126032920_999226
+15/12/24 02:26:41 INFO mapred.JobClient: Tracking URL: http://nj01-nanling-mapred01.nj01.baidu.com:8030/jobproxy.jsp?jobid=job_20151126032920_999226
+15/12/24 02:26:58 INFO mapred.JobClient: Total split num: 10
+15/12/24 02:26:58 INFO mapred.JobClient: Total split size: 2915 (bytes)
+15/12/24 02:26:58 INFO mapred.JobClient: Total split time: 376 (ms)
+15/12/24 02:26:59 INFO mapred.JobClient:  map 0% reduce 0%
+15/12/24 02:27:29 INFO mapred.JobClient:  map 30% reduce 0%
+15/12/24 02:27:38 INFO mapred.JobClient:  map 90% reduce 0%
+15/12/24 02:27:48 INFO mapred.JobClient:  map 100% reduce 0%
+15/12/24 02:28:09 INFO mapred.JobClient:  map 100% reduce 60%
+15/12/24 02:28:14 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:28:14 INFO mapred.JobClient: Updating completed job! Ignoring ...
+15/12/24 02:28:14 INFO mapred.JobClient: Job complete: job_20151126032920_999226
+15/12/24 02:28:14 INFO streaming.StreamJob: Output: /app/ps/spider/wdm-entities-offline/wangbo01/tmp/pagerank/output_30
++ ret=0
++ '[' 0 -ne 0 ']'
++ (( idx=29+1 ))
++ '[' 30 -lt 30 ']'
